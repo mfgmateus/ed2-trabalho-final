@@ -70,6 +70,14 @@ int insereAresta(Grafo* gr, int orig, int dest, int eh_digrafo, int val){
 
     gr->arestas[orig][grauOrig] = dest;
 
+    if(gr->trabalhos == NULL){
+        return 0;
+    }
+
+    if(gr->trabalhos[orig] == NULL){
+        gr->trabalhos[orig] = malloc(gr->nro_vertices * sizeof(Lista**));
+    }
+
     if(gr->trabalhos[orig][grauOrig] == NULL){
         gr->trabalhos[orig][grauOrig] = cria_lista();
     };
@@ -138,4 +146,18 @@ float med_grau(Grafo* gr){
         }
     }
     return total/qtde;
+}
+
+
+int monta_grafo(Grafo* g, int work, void* workersV){
+    Lista* workers = (Lista*)workersV;
+    int i, j;
+    for(i = 0; i < workers->qtd; i++){
+        for(j = 0; j < workers->qtd; j++){
+            if(i == j){
+                continue;
+            }
+            insereAresta(g, workers->dados[i], workers->dados[j], 1, work);
+        }
+    }
 }
