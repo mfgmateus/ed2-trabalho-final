@@ -2,13 +2,13 @@
 #include <string.h>
 #include "TabelaHash.h"
 
+
 Hash* criaHash(int TABLE_SIZE){
     Hash* ha = (Hash*) malloc(sizeof(Hash));
     if(ha != NULL){
         int i;
         ha->TABLE_SIZE = TABLE_SIZE;
-        ha->itens = (Lista**) malloc(TABLE_SIZE * sizeof(Lista*));
-        ha->trabalhos = (char**) malloc(TABLE_SIZE * sizeof(char*));
+        ha->itens = (Trabalho**) malloc(TABLE_SIZE * sizeof(Trabalho*));
         if(ha->itens == NULL){
             free(ha);
             return NULL;
@@ -53,15 +53,16 @@ int insereHash(Hash* ha, char trabalho[], int idPesquisador){
     int pos = chaveDivisao(chave,ha->TABLE_SIZE);
 
     if(ha->itens[pos] == NULL){
-        ha->itens[pos] = cria_lista();
+        ha->itens[pos] = (Trabalho*) malloc(sizeof(Trabalho));
         ha->qtd++;
-        ha->trabalhos[pos] = malloc(100*sizeof(char));
-        strcpy(ha->trabalhos[pos], trabalho);
-        return insere_lista_final(ha->itens[pos], idPesquisador);
+        ha->itens[pos]->nome = malloc(100*sizeof(char));
+        ha->itens[pos]->itens = cria_lista();
+        strcpy(ha->itens[pos]->nome, trabalho);
+        return insere_lista_final(ha->itens[pos]->itens, idPesquisador);
     }else{
-        if(strcmp(ha->trabalhos[pos],trabalho) == 0){
+        if(strcmp(ha->itens[pos]->nome,trabalho) == 0){
             ha->qtd++;
-            return insere_lista_final(ha->itens[pos], idPesquisador);
+            return insere_lista_final(ha->itens[pos]->itens, idPesquisador);
         }
         else{
             int i, newPos;
@@ -70,7 +71,7 @@ int insereHash(Hash* ha, char trabalho[], int idPesquisador){
                 if(ha->itens[newPos] == NULL){
                     ha->itens[newPos] = cria_lista();
                     ha->qtd++;
-                    return insere_lista_final(ha->itens[newPos], idPesquisador);
+                    return insere_lista_final(ha->itens[newPos]->itens, idPesquisador);
                 }
             }
         }
@@ -92,9 +93,8 @@ int buscaHash(Hash* ha, char trabalho[], int *retorno, int *qtdadePesq){
         return 0;
     }
     else{
-        if(strcmp(ha->trabalhos[pos],trabalho) == 0){
-            //imprime_lista(ha->itens[pos]);
-            lista_retorno(ha->itens[pos], retorno, qtdadePesq);
+        if(strcmp(ha->itens[pos]->nome,trabalho) == 0){
+            lista_retorno(ha->itens[pos]->itens, retorno, qtdadePesq);
             return 1;
         }
         else{
@@ -104,8 +104,7 @@ int buscaHash(Hash* ha, char trabalho[], int *retorno, int *qtdadePesq){
                 if(ha->itens[newPos] == NULL)
                     return 0;
 
-                if(strcmp(ha->trabalhos[newPos],trabalho) == 0){
-                    //imprime_lista(ha->itens[newPos]);
+                if(strcmp(ha->itens[newPos]->nome,trabalho) == 0){
                     lista_retorno(ha->itens[newPos], retorno, qtdadePesq);
                     return 1;
                 }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "TabelaHash.h"
+#include "ListaSequencial.h"
 #include "Grafo.h"
 
 
@@ -16,14 +17,15 @@ int main()
     insereHash(trabPesq, work,202);
     insereHash(trabPesq, work,203);
 
-    Grafo* g = cria_Grafo(500, 10);
     int i;
+
+    Grafo* g = cria_Grafo(500, 10);
 
     for(i = 0; i < trabPesq->TABLE_SIZE; i++){
         if(trabPesq->itens[i] == NULL){
             continue;
         }
-        monta_grafo(g, i, trabPesq->itens[i]);
+        monta_grafo(g, i, trabPesq->itens[i]->itens);
     }
 
     imprime_Grafo(g);

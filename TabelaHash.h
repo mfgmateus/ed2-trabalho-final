@@ -1,11 +1,17 @@
 #include "ListaSequencial.h"
 
+
+typedef struct trabalho{
+    char* nome;
+    Lista* itens;
+} Trabalho;
+
 typedef struct hash{
     int qtd;
     int TABLE_SIZE;
-    Lista **itens;
-    char** trabalhos;
+    Trabalho** itens;
 } Hash;
+
 
 Hash* criaHash(int TABLE_SIZE);
 void liberaHash(Hash* ha);
