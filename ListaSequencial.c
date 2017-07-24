@@ -3,10 +3,7 @@
 #include "ListaSequencial.h" //inclui os Protótipos
 
 //Definição do tipo lista
-struct lista{
-    int qtd;
-    int dados[MAX];
-};
+
 
 Lista* cria_lista(){
     Lista *li;

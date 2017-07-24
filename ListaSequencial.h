@@ -1,7 +1,13 @@
 //Arquivo ListaSequencial.h
 #define MAX 20
 
-typedef struct lista Lista;
+#ifndef _LIST_
+#define _LIST_
+typedef struct lista{
+    int qtd;
+    int dados[MAX];
+} Lista;
+#endif // _LIST_
 Lista* cria_lista();
 void libera_lista(Lista* li);
 int consulta_lista_pos(Lista* li, int id);

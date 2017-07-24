@@ -39,7 +39,23 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ListaSequencial.h" />
+		<Unit filename="TabelaHash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="TabelaHash.h" />
 		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="trash/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="trash/main2.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
