@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "TabelaHash.h"
-#include "ListaSequencial.h"
+#include "TabelaHashColaborator.h"
 #include "Grafo.h"
 
 
 int main()
 {
 
-    Hash* trabPesq = criaHash(500009);
+    Hash* trabPesq = criaHash(359311);
+    HashColab* colabs = criaHash(22721);
 
     char work[100] = "microstructure and wear of a cu-si-b alloy and diamond composites obtained in high pressure and high temperature conditions";
 
@@ -19,7 +20,7 @@ int main()
 
     int i;
 
-    Grafo* g = cria_Grafo(500, 10);
+    Grafo* g = cria_Grafo(22721, 10);
 
     for(i = 0; i < trabPesq->TABLE_SIZE; i++){
         if(trabPesq->itens[i] == NULL){

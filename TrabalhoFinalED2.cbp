@@ -35,6 +35,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Grafo.h" />
+		<Unit filename="HashCommon.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="ListaSequencial.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -43,6 +46,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="TabelaHash.h" />
+		<Unit filename="TabelaHashColaborator.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="TabelaHashColaborator.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

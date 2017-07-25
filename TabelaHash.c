@@ -32,18 +32,6 @@ void liberaHash(Hash* ha){
     }
 }
 
-int valorString(char *str){
-    int i, valor = 7;
-    int tam = strlen(str);
-    for(i=0; i < tam; i++)
-        valor = 31 * valor + (int) str[i];
-    return (valor & 0x7FFFFFFF);
-}
-
-int chaveDivisao(int chave, int TABLE_SIZE){
-    return (chave & 0x7FFFFFFF) % TABLE_SIZE;
-}
-
 int insereHash(Hash* ha, char trabalho[], int idPesquisador){
 
     if(ha == NULL || ha->qtd == ha->TABLE_SIZE)
@@ -78,9 +66,7 @@ int insereHash(Hash* ha, char trabalho[], int idPesquisador){
     }
 }
 
-int sondagemLinear(int pos, int i, int TABLE_SIZE){
-    return ((pos + i) & 0x7FFFFFFF) % TABLE_SIZE;
-}
+
 
 int buscaHash(Hash* ha, char trabalho[], int *retorno, int *qtdadePesq){
     if(ha == NULL)
