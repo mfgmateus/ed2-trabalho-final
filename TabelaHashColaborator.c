@@ -49,9 +49,9 @@ int insereHashColab(HashColab* ha, char* nome){
         for(i = 0; i < ha->TABLE_SIZE; i++){
             newPos = sondagemLinear(pos,i,ha->TABLE_SIZE);
             if(ha->itens[newPos] == NULL){
-                ha->itens[pos] = (char*) malloc(100 * sizeof(char));
+                ha->itens[newPos] = (char*) malloc(100 * sizeof(char));
                 ha->qtd++;
-                strcpy(ha->itens[pos], nome);
+                strcpy(ha->itens[newPos], nome);
                 return newPos;
             }
         }

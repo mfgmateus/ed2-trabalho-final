@@ -53,6 +53,7 @@ int insereAresta(Grafo* gr, int orig, int dest, int eh_digrafo, int val) {
 	for (i = 0; i < gr->grau_max; i++) {
 		if (gr->arestas[orig][i] == dest) {
 			grauOrig = i;
+			break;
 		}
 	}
 

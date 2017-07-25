@@ -18,7 +18,7 @@ void imprime_colabs(Grafo* g, HashColab* colabs, Hash* works, char* colab) {
 }
 
 void imprime_authors(Hash* works, HashColab* colabs, char* work){
-	int currentColabs[20];
+	int currentColabs[50];
 	int colabsLen, i;
 	buscaHash(works, work, currentColabs, &colabsLen);
 	printf("Autores de %s:\n", work);
@@ -75,20 +75,25 @@ int main() {
 
 	printf("Works Loaded!\n");
 
-	Grafo* g = cria_Grafo(22721, 30);
+	Grafo* g = cria_Grafo(22721, 50);
 
 	for (i = 0; i < trabPesq->TABLE_SIZE; i++) {
 		if (trabPesq->itens[i] == NULL) {
 			continue;
+		}
+		if(i == 109274){
+			printf("%d\n",i);
 		}
 		monta_grafo(g, i, trabPesq->itens[i]->itens);
 	}
 
 	printf("Graph Created!\n");
 
+	return 0;
+
 	imprime_colabs(g, colabs, trabPesq, "rodrigo franco goncalves");
-	imprime_authors(trabPesq, colabs, "towards a hybrid federated cloud platform to efficiently execute bioinformatics workflows");
-	imprime_colabs(g, colabs, trabPesq, "andre ricardo backes");
+	//imprime_authors(trabPesq, colabs, "towards a hybrid federated cloud platform to efficiently execute bioinformatics workflows");
+	//imprime_colabs(g, colabs, trabPesq, "andre ricardo backes");
 
 	printf("Grau Máximo: %d\n", max_grau(g));
 	printf("Grau Médio: %.2f\n", med_grau(g));

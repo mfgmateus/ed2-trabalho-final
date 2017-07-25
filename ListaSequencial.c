@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ListaSequencial.h" //inclui os Protótipos
+#include "ListaSequencial.h" //inclui os Protï¿½tipos
 
-//Definição do tipo lista
+//Definiï¿½ï¿½o do tipo lista
 
 
 Lista* cria_lista(){
