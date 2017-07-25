@@ -8,8 +8,7 @@
 Lista* cria_lista(){
     Lista *li;
     li = (Lista*) malloc(sizeof(struct lista));
-    if(li != NULL)
-        li->qtd = 0;
+    li->qtd = 0;
     return li;
 }
 
@@ -20,12 +19,41 @@ void libera_lista(Lista* li){
 int insere_lista_final(Lista* li, int val){
     if(li == NULL)
         return 0;
-    if(li->qtd == MAX)//lista cheia
+
+    if(li->qtd >= MAX)//lista cheia
         return 0;
+
+    if(li->dados == NULL)
+        return 0;
+
     li->dados[li->qtd] = val;
     li->qtd++;
     return 1;
 }
+
+int insere_lista_final_uniq(Lista* li, int val){
+    if(li == NULL)
+        return 0;
+
+    if(li->qtd >= MAX)//lista cheia
+        return 0;
+
+    if(li->dados == NULL)
+        return 0;
+
+    int i;
+
+    for(i = 0; i < li->qtd; i++){
+        if(li->dados[i] == val){
+            return 0;
+        }
+    }
+
+    li->dados[li->qtd] = val;
+    li->qtd++;
+    return 1;
+}
+
 
 int tamanho_lista(Lista* li){
     if(li == NULL)

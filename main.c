@@ -11,12 +11,38 @@ int main()
     Hash* trabPesq = criaHash(359311);
     HashColab* colabs = criaHash(22721);
 
-    char work[100] = "microstructure and wear of a cu-si-b alloy and diamond composites obtained in high pressure and high temperature conditions";
+    FILE* f = fopen("dadosPesquisadores10000.txt", "r");
 
-    insereHash(trabPesq, work,200);
-    insereHash(trabPesq, work,201);
-    insereHash(trabPesq, work,202);
-    insereHash(trabPesq, work,203);
+    while(1){
+
+        char line[500];
+        char worker[50];
+        char work[100];
+
+
+        if(feof(f)){
+            break;
+        }
+
+        fscanf(f, "%[^\n]%*c", line);
+
+        char* end = strchr( line, '\t' );
+
+        sprintf(worker, "%.*s", end - line, line);
+        sprintf(work, "%s", end+1);
+
+        int pId = insereHashColab(colabs, worker);
+        printf("%d\n",pId);
+
+        if(pId == 17026){
+            printf("%d\n",pId);
+        }
+
+        insereHash(trabPesq, work, pId);
+
+    }
+
+    return 0;
 
     int i;
 
@@ -30,7 +56,6 @@ int main()
     }
 
     imprime_Grafo(g);
-
 
     printf("Grau Máximo: %d\n",max_grau(g));
     printf("Grau Médio: %.2f\n",med_grau(g));

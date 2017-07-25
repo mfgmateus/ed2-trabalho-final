@@ -38,6 +38,7 @@
 		<Unit filename="HashCommon.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="HashCommon.h" />
 		<Unit filename="ListaSequencial.c">
 			<Option compilerVar="CC" />
 		</Unit>

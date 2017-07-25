@@ -138,12 +138,15 @@ int max_grau(Grafo* gr){
 }
 float med_grau(Grafo* gr){
     int i, qtde = 0;
-    float total;
+    float total = 0;
     for(i = 0; i < gr->nro_vertices; i++){
         if(gr->grau[i]){
             total += gr->grau[i];
             qtde++;
         }
+    }
+    if(total == 0){
+        return 0;
     }
     return total/qtde;
 }
