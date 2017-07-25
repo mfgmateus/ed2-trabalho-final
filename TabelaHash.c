@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "TabelaHash.h"
 
 Hash* criaHash(int TABLE_SIZE){
@@ -40,13 +41,8 @@ int insereHash(Hash* ha, char trabalho[], int idPesquisador){
     int chave = valorString(trabalho);
     int pos = chaveDivisao(chave,ha->TABLE_SIZE);
 
-    if(pos == 34256){
-        printf("Trab %s\n",trabalho);
-    }
-
     if(ha->itens[pos] == NULL){
-        ha->itens[pos] = (Trabalho*) malloc(sizeof(Trabalho));
-        int i;
+        ha->itens[pos] = (Trabalho*) malloc(sizeof(Trabalho*));
         ha->qtd++;
         ha->itens[pos]->nome = malloc(400*sizeof(char));
         ha->itens[pos]->itens = cria_lista();
@@ -54,11 +50,6 @@ int insereHash(Hash* ha, char trabalho[], int idPesquisador){
         strcpy(ha->itens[pos]->nome, trabalho);
         return insere_lista_final(ha->itens[pos]->itens, idPesquisador);
     }else{
-        if(ha->itens[pos]->nome == NULL && ha->itens[pos] == NULL){
-            printf("Lista[%d]: ",pos);
-            imprime_lista(ha->itens[pos]->itens);
-            return 0;
-        }
         if(strcmp(ha->itens[pos]->nome,trabalho) == 0){
             ha->qtd++;
             return insere_lista_final_uniq(ha->itens[pos]->itens, idPesquisador);
@@ -68,13 +59,17 @@ int insereHash(Hash* ha, char trabalho[], int idPesquisador){
             for(i = 0; i < ha->TABLE_SIZE; i++){
                 newPos = sondagemLinear(pos,i,ha->TABLE_SIZE);
                 if(ha->itens[newPos] == NULL){
-                    ha->itens[newPos] = cria_lista();
-                    ha->qtd++;
+                	ha->itens[newPos] = (Trabalho*) malloc(sizeof(Trabalho*));
+                	ha->itens[newPos]->nome = malloc(400*sizeof(char));
+                	ha->itens[newPos]->itens = cria_lista();
+                	ha->itens[newPos]->itens->qtd = 0;
+                	strcpy(ha->itens[newPos]->nome, trabalho);
                     return insere_lista_final(ha->itens[newPos]->itens, idPesquisador);
                 }
             }
         }
     }
+    return 0;
 }
 
 

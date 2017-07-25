@@ -1,7 +1,14 @@
 //Arquivo Grafo.h
+#include "ListaSequencial.h"
 
-
-typedef struct grafo Grafo;
+//Defini��o do tipo Grafo
+typedef struct grafo{
+    int nro_vertices;
+    int grau_max;
+    int** arestas;
+    Lista*** trabalhos;
+    int* grau;
+} Grafo;
 
 Grafo* cria_Grafo(int nro_vertices, int grau_max);
 void libera_Grafo(Grafo* gr);
