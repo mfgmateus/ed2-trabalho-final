@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "TabelaHash.h"
 #include "TabelaHashColaborator.h"
 #include "Grafo.h"
@@ -51,7 +52,7 @@ int main() {
 
 		char* end = strchr(line, '\t');
 
-		sprintf(worker, "%.*s", end - line, line);
+		sprintf(worker, "%.*s", (int)(end - line), line);
 		sprintf(work, "%s", end + 1);
 
 		if(worker == NULL || work == NULL){
@@ -75,7 +76,7 @@ int main() {
 
 	printf("Works Loaded!\n");
 
-	Grafo* g = cria_Grafo(22721, 50);
+	Grafo* g = cria_Grafo(22721, 200);
 
 	for (i = 0; i < trabPesq->TABLE_SIZE; i++) {
 		if (trabPesq->itens[i] == NULL) {

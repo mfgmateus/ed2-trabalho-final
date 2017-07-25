@@ -18,4 +18,5 @@ void liberaHash(Hash* ha);
 int insereHash(Hash* ha, char trabalho[], int idPesquisador);
 int buscaHash(Hash* ha, char trabalho[], int *retorno8, int *qtdadePesq);
 int buscaHashList(Hash* ha, char trabalho[], Lista* li);
+int lista_retorno(Lista* li, int *retorno, int *qtdadePesq);
 
