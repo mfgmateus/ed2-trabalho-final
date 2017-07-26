@@ -23,7 +23,7 @@ Hash* criaHash(int TABLE_SIZE) {
 
 void liberaHash(Hash* ha) {
 	if (ha != NULL) {
-		int i, j;
+		int i;
 		for (i = 0; i < ha->TABLE_SIZE; i++) {
 			if (ha->itens[i] != NULL) {
 				libera_lista(ha->itens[i]->itens);
