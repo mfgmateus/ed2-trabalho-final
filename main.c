@@ -1,3 +1,11 @@
+/*
+ Grupo DMV
+ Integrantes:
+ Daniel Augusto Alves de Oliveira - 11611BSI236
+ Mateus Ferreira Gonçalves - 11611BSI269
+ Vicente Gonçalves de Freitas Junior - 31211BSI012
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,16 +37,16 @@ int main() {
 
 		char* end = strchr(line, '\t');
 
-		sprintf(worker, "%.*s", (int)(end - line), line);
+		sprintf(worker, "%.*s", (int) (end - line), line);
 		sprintf(work, "%s", end + 1);
 
-		if(worker == NULL || work == NULL){
+		if (worker == NULL || work == NULL) {
 			continue;
 		}
 
 		int pId = insereHashColab(colabs, worker);
 
-		if(pId == -1){
+		if (pId == -1) {
 			printf("Falha ao criar hash para %s", worker);
 			return 1;
 		}
@@ -57,7 +65,7 @@ int main() {
 			continue;
 		}
 
-		if(trabPesq->itens[i]->itens->qtd == 1){
+		if (trabPesq->itens[i]->itens->qtd == 1) {
 			continue;
 		}
 
@@ -68,7 +76,8 @@ int main() {
 
 	imprime_colabs(g, colabs, trabPesq, "jean marcelo simao");
 	imprime_colabs(g, colabs, trabPesq, "andre ricardo backes");
-	imprime_authors(trabPesq, colabs, "towards a hybrid federated cloud platform to efficiently execute bioinformatics workflows");
+	imprime_authors(trabPesq, colabs,
+			"towards a hybrid federated cloud platform to efficiently execute bioinformatics workflows");
 
 	printf("Grau Máximo: %d\n", max_grau(g));
 	printf("Grau Médio: %.2f\n", med_grau(g));
@@ -76,12 +85,10 @@ int main() {
 	return 0;
 }
 
-
-
 void imprime_colabs(Grafo* g, HashColab* colabs, Hash* works, char* colab) {
 
 	int idPesquisador, i;
-	if(!buscaHashColab(colabs, colab, &idPesquisador)){
+	if (!buscaHashColab(colabs, colab, &idPesquisador)) {
 		printf("Colaborador não encontrado!\n");
 		return;
 	}
@@ -94,13 +101,13 @@ void imprime_colabs(Grafo* g, HashColab* colabs, Hash* works, char* colab) {
 	printf("-------------------------\n");
 }
 
-void imprime_authors(Hash* works, HashColab* colabs, char* work){
+void imprime_authors(Hash* works, HashColab* colabs, char* work) {
 	int currentColabs[50];
 	int colabsLen, i;
 	buscaHash(works, work, currentColabs, &colabsLen);
 	printf("Autores de %s:\n", work);
-	for(i = 0; i < colabsLen; i++){
-		printf("- %s\n",colabs->itens[currentColabs[i]]);
+	for (i = 0; i < colabsLen; i++) {
+		printf("- %s\n", colabs->itens[currentColabs[i]]);
 	}
 	printf("-------------------------\n");
 }

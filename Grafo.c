@@ -18,8 +18,8 @@ Grafo* cria_Grafo(int nro_vertices, int grau_max) {
 		for (i = 0; i < nro_vertices; i++)
 			gr->arestas[i] = (int*) malloc(grau_max * sizeof(int));
 
-		for (i = 0; i < nro_vertices; i++){
-			for(j = 0; j < grau_max; j++){
+		for (i = 0; i < nro_vertices; i++) {
+			for (j = 0; j < grau_max; j++) {
 				gr->arestas[i][j] = -1;
 			}
 		}
@@ -65,13 +65,12 @@ int insereAresta(Grafo* gr, int orig, int dest, int eh_digrafo, int val) {
 
 	if (grauOrig == -1) {
 		grauOrig = gr->grau[orig];
-		if(grauOrig > gr->grau_max){
-			printf("Grau máximo atingido: %d\n",grauOrig);
+		if (grauOrig > gr->grau_max) {
+			printf("Grau máximo atingido: %d\n", grauOrig);
 			return 0;
 		}
 		gr->grau[orig]++;
 	}
-
 
 	gr->arestas[orig][grauOrig] = dest;
 
@@ -156,7 +155,7 @@ float med_grau(Grafo* gr) {
 	return total / qtde;
 }
 
-void monta_grafo(Grafo* g, int work, void* workersV,  HashColab* colabs) {
+void monta_grafo(Grafo* g, int work, void* workersV, HashColab* colabs) {
 	Lista* workers = (Lista*) workersV;
 	int i, j;
 	for (i = 0; i < workers->qtd; i++) {

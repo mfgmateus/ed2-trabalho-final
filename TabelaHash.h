@@ -2,7 +2,7 @@
 #include "HashCommon.h"
 
 typedef struct trabalho{
-    char* nome;
+	char* nome;
     Lista* itens;
 } Trabalho;
 

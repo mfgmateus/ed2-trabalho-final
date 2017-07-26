@@ -3,12 +3,12 @@
 #include "TabelaHashColaborator.h"
 
 //Defini��o do tipo Grafo
-typedef struct grafo{
-    int nro_vertices;
-    int grau_max;
-    int** arestas;
-    Lista*** trabalhos;
-    int* grau;
+typedef struct grafo {
+	int nro_vertices;
+	int grau_max;
+	int** arestas;
+	Lista*** trabalhos;
+	int* grau;
 } Grafo;
 
 Grafo* cria_Grafo(int nro_vertices, int grau_max);
@@ -18,4 +18,4 @@ int removeAresta(Grafo* gr, int orig, int dest, int eh_digrafo);
 void imprime_Grafo(Grafo *gr);
 int max_grau(Grafo* gr);
 float med_grau(Grafo* gr);
-void monta_grafo(Grafo* g, int work, void* workersV,  HashColab* colabs);
+void monta_grafo(Grafo* g, int work, void* workersV, HashColab* colabs);

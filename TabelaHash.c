@@ -25,7 +25,7 @@ void liberaHash(Hash* ha) {
 	if (ha != NULL) {
 		int i, j;
 		for (i = 0; i < ha->TABLE_SIZE; i++) {
-			if (ha->itens[i] != NULL){
+			if (ha->itens[i] != NULL) {
 				libera_lista(ha->itens[i]->itens);
 				free(ha->itens[i]);
 			}

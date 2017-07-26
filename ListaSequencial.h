@@ -3,9 +3,9 @@
 
 #ifndef _LIST_
 #define _LIST_
-typedef struct lista{
-    int qtd;
-    int dados[MAX];
+typedef struct lista {
+	int qtd;
+	int dados[MAX];
 } Lista;
 #endif // _LIST_
 Lista* cria_lista();

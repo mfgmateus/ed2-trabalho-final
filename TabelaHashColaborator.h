@@ -3,10 +3,10 @@
 
 #ifndef _HASH_COLAB_
 #define _HASH_COLAB_
-typedef struct hashColab{
-    int qtd;
-    int TABLE_SIZE;
-    char** itens;
+typedef struct hashColab {
+	int qtd;
+	int TABLE_SIZE;
+	char** itens;
 } HashColab;
 #endif
 
