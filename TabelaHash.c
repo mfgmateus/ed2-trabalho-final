@@ -65,9 +65,6 @@ int insereHash(Hash* ha, char trabalho[], int idPesquisador) {
 					ha->itens[newPos]->itens = cria_lista();
 					ha->itens[newPos]->itens->qtd = 0;
 					strcpy(ha->itens[newPos]->nome, trabalho);
-					if (idPesquisador == 2926) {
-						printf("%d\n", newPos);
-					}
 					return insere_lista_final(ha->itens[newPos]->itens,
 							idPesquisador);
 				}

@@ -1,5 +1,6 @@
 //Arquivo Grafo.h
 #include "ListaSequencial.h"
+#include "TabelaHashColaborator.h"
 
 //Defini��o do tipo Grafo
 typedef struct grafo{
@@ -17,4 +18,4 @@ int removeAresta(Grafo* gr, int orig, int dest, int eh_digrafo);
 void imprime_Grafo(Grafo *gr);
 int max_grau(Grafo* gr);
 float med_grau(Grafo* gr);
-int monta_grafo(Grafo* g, int work, void* workers);
+void monta_grafo(Grafo* g, int work, void* workersV,  HashColab* colabs);

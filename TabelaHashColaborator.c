@@ -34,7 +34,7 @@ void liberaHashColab(HashColab* ha){
 int insereHashColab(HashColab* ha, char* nome){
 
     if(ha == NULL || ha->qtd == ha->TABLE_SIZE)
-        return 0;
+        return -1;
 
     int chave = valorString(nome);
     int pos = chaveDivisao(chave,ha->TABLE_SIZE);
@@ -53,11 +53,14 @@ int insereHashColab(HashColab* ha, char* nome){
                 ha->qtd++;
                 strcpy(ha->itens[newPos], nome);
                 return newPos;
+            }else if(strcmp(ha->itens[newPos], nome) == 0){
+            	return newPos;
             }
         }
     }else{
         return pos;
     }
+    return -1;
 }
 
 int buscaHashColab(HashColab* ha, char* nome, int *retorno){
